@@ -29,7 +29,6 @@ async function Paises() {
 
 
 function Render() {
-    body.innerHTML = "";
 
     data.forEach(pais => {
 
