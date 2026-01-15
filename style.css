@@ -12,4 +12,9 @@ body{
     flex-direction: column;
 
     text-align: center;
+    color: rgb(14, 90, 65);
+}
+
+.card{
+    box-shadow: 7px 7px 7px -5px #050505;
 }
