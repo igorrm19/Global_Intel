@@ -1,6 +1,10 @@
 const search = document.getElementById("search");
 const body = document.getElementById("cards");
 const card = document.getElementById("card");
+const selectRegiao = document.getElementById("region-filter");
+const svgs = document.querySelector("svg");
+const svgSort = svgs[1];
+
 
 let res;
 let http = "https://restcountries.com/v3.1/independent?status=true";
@@ -80,7 +84,7 @@ function Render() {
             divPais.style.alignItems = "start";
             divPais.style.padding = "10px";
             divPais.style.marginTop = "60px"
-            
+
 
             const regiaoPais = document.createElement("p")
             const moedaPais = document.createElement("p")
@@ -131,5 +135,37 @@ search.addEventListener("input", () => {
 
     Render();
 });
+
+
+
+selectRegiao.addEventListener("change", () => {
+    const regiao = selectRegiao.value;
+
+    if (!regiao) {
+        data = [...dataOriginal];
+        Render();
+        return;
+    }
+
+    data = dataOriginal.filter(pais =>
+        pais.region === regiao
+    );
+
+    Render();
+});
+
+
+let asc = false;
+
+svgs.addEventListener("click", () => {
+    data.sort((a, b) =>
+        asc ? a.population - b.population : b.population - a.population
+    );
+
+    asc = !asc;
+    Render();
+});
+
+
 
 Paises();

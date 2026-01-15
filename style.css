@@ -27,6 +27,16 @@ body{
     padding: 3px;
 }
 
+svg {
+  cursor: pointer;
+  pointer-events: all;
+}
+
+svg path {
+  pointer-events: none;
+}
+
+
 #cards {
     display: grid;
     grid-template-columns: 1fr; /* mobile */
